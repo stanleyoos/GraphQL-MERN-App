@@ -17,7 +17,8 @@ const AddClientModal = () => {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    if (name === "" || email === "" || phone === "") alert("Fill all fields!")
+    if (name === "" || email === "" || phone === "")
+      return alert("Fill all fields!")
 
     addClient(name, email, phone)
 

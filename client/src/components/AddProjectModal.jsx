@@ -22,7 +22,7 @@ const AddClientModal = () => {
     e.preventDefault()
 
     if (name === "" || description === "" || status === "" || clientId === "")
-      return null
+      return alert("Fill all fields!")
 
     addProject(name, description, status, clientId)
 

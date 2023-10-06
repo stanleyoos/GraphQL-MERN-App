@@ -13,7 +13,7 @@ const DeleteProjectButton = ({ projectId }) => {
     onCompleted: () => navigate("/"),
   })
   return (
-    <button onClick={deleteProject} className="btn btn-light mt-3">
+    <button onClick={deleteProject} className="btn btn-light">
       <FaTrash /> Delete
     </button>
   )

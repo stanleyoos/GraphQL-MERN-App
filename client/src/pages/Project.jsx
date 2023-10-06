@@ -5,6 +5,7 @@ import Spinner from "../components/Spinner"
 import { Link } from "react-router-dom"
 import ClientInfo from "../components/ClientInfo"
 import DeleteProjectButton from "../components/DeleteProjectButton"
+import EditProjectModal from "../components/EditProjectModal"
 
 const Project = () => {
   const { id } = useParams()
@@ -33,7 +34,10 @@ const Project = () => {
                 Status: <strong>{data.project.status}</strong>
               </p>
               <ClientInfo client={data.project.client} />
-              <DeleteProjectButton projectId={id} />
+              <div className="d-flex align-items-center mt-4">
+                <EditProjectModal project={data.project} />
+                <DeleteProjectButton projectId={id} />
+              </div>
             </div>
           </div>
         </div>
