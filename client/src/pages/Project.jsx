@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client"
 import { GET_PROJECT } from "../queries/projectQueries"
 import Spinner from "../components/Spinner"
 import { Link } from "react-router-dom"
+import ClientInfo from "../components/ClientInfo"
 
 const Project = () => {
   const { id } = useParams()
@@ -16,8 +17,8 @@ const Project = () => {
     <>
       {!loading && !error && (
         <div className="d-flex justify-content-center mt-5">
-          <div class="card p-3" style={{ width: "28rem" }}>
-            <div class="card-body">
+          <div className="card p-3" style={{ width: "28rem" }}>
+            <div className="card-body">
               <div className="d-flex justify-content-between">
                 <h1 className="mb-4">{data.project.name}</h1>
                 <Link to={`/`}>
@@ -26,10 +27,11 @@ const Project = () => {
                   </button>
                 </Link>
               </div>
-              <p class="card-text mb-4">{data.project.description}</p>
-              <p class="card-text">
+              <p className="card-text mb-4">{data.project.description}</p>
+              <p className="card-text mb-4">
                 Status: <strong>{data.project.status}</strong>
               </p>
+              <ClientInfo client={data.project.client} />
             </div>
           </div>
         </div>
