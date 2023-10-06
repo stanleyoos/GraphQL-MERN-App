@@ -3,6 +3,7 @@ import { FaList } from "react-icons/fa"
 import { useMutation, useQuery } from "@apollo/client"
 import { GET_PROJECTS } from "../queries/projectQueries"
 import { GET_CLIENTS } from "../queries/clientQueries"
+import { ADD_PROJECT } from "../mutations/projectMutation"
 
 const AddClientModal = () => {
   const [name, setName] = useState("")
@@ -10,22 +11,20 @@ const AddClientModal = () => {
   const [clientId, setClientId] = useState("")
   const [status, setStatus] = useState("new")
 
-  //   const [addClient] = useMutation(ADD_CLIENT, {
-  //     variables: { name, email, phone },
-  //     refetchQueries: [{ query: GET_CLIENTS }],
-  //   })
+  const [addProject] = useMutation(ADD_PROJECT, {
+    variables: { name, description, clientId, status },
+    refetchQueries: [{ query: GET_PROJECTS }],
+  })
 
   const { loading, error, data } = useQuery(GET_CLIENTS)
-
-  console.log(data)
 
   const onSubmit = (e) => {
     e.preventDefault()
 
     if (name === "" || description === "" || status === "" || clientId === "")
-      alert("Fill all fields!")
+      return null
 
-    // addClient(name, email, phone)
+    addProject(name, description, status, clientId)
 
     setName("")
     setDescription("")
